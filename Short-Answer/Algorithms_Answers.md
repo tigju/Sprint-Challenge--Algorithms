@@ -8,7 +8,9 @@ a)  a = 0
     while (a < n * n * n):  # O(n)
         a = a + n * n       # O(1)
 ```
+
 The time complexity of this snippet is linear O(n), because the statement inside the while loop is constant O(1), it doesn't depend on how big n input is. However while loop depends on how big n is, the bigger n will be the more iterations will be in a loop that makes time complexity linear O(n).
+
 
 ```python
 b)  sum = 0
@@ -19,7 +21,9 @@ b)  sum = 0
         j *= 2          # O(1)
         sum += 1        # O(1)
 ```
+
 The time complexity of this snippet is quadratic O(n^2), there are two nested loops (for and while) which depend on input n. the larger n will be iterations will be doubled, therefore time complexity is quadratic O(n^2).
+
 
 ```python
 c)  def bunnyEars(bunnies):
@@ -28,7 +32,9 @@ c)  def bunnyEars(bunnies):
 
       return 2 + bunnyEars(bunnies-1) # 
 ```
+
 This function is being called recursively n-1 each time before reaching the base case. Since it is n-1, we deduct 1 from n before calling the function, so the time complexity is O(n-1), and it's the same as O(n), therefore it's linear. 
+
 
 ## Exercise II
 
