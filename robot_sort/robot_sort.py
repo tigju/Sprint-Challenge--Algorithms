@@ -98,62 +98,51 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.set_light_on()
-        self.swap_item()
-
-        for i in range(0, len(self._list)):
-
+        # check if light is off (meaning if array is unsorted)
+        while self.light_is_on() is False:
+            # turn the light on (assume that array is sorted)
+            # base case to get out from loop
+            self.set_light_on()
+            # check if there is any item in front (to the right)
             while self.can_move_right():
+                # swap the item (get the item to hold)
+                self.swap_item()
+                # change position to next in a list (on the right)
                 self.move_right()
-                if self.compare_item() == -1:
-                    self.swap_item()
-                if self.compare_item() is None:
-                    self.move_left()
-
-            self.swap_item()
-
-            while self.can_move_left():
-                self.move_left()
+                # if held item is greater than the item to the right
                 if self.compare_item() == 1:
+                    # swap the item to get smaller item to hold
                     self.swap_item()
-                if self.compare_item() is None:
-                    self.swap_item()
+                    # set light off because the list is unsorted
                     self.set_light_off()
-        return           
+                # go back (change position to the left)  
+                self.move_left()
+                # swap item to change the None value at current position 
+                # in array to the held item
+                self.swap_item()
+                # change the position to the next (to the right)
+                self.move_right()
+            # check if there is any item behind (to the left)
+            while self.can_move_left():
+                # # swap the item (get the item to hold) (the last in a list)
+                self.swap_item()
+                # change position to previous in a list (on the left)
+                self.move_left()
+                # if held item is less than the item to left
+                if self.compare_item() == -1:
+                    # swap the item to get larger item to hold
+                    self.swap_item()
+                    # turn light off because it's still unsorted and 
+                    # we have to loop through it again
+                    self.set_light_off()
+                # go back (change position to the right)
+                self.move_right()
+                # swap item to change the None value at current position
+                # in array to the held item
+                self.swap_item()
+                # change position to previous (to the left)
+                self.move_left()
         
-        
-
-    # def sort(self):
-    #     """
-    #     Sort the robot's list. Somewhat like bubble sort.
-    #     """
-    #     while any([self.can_move_right(), self.light_is_on(), 
-    #                self.compare_item() == 1]):
-    #         if self.light_is_on(): # left-moving mode
-    #             if self.compare_item() in [0, 1]: # if holding larger
-    #                 self.swap_item()
-    #                 self.move_left()
-    #             elif self.compare_item() is None:
-    #                 self.swap_item()
-    #                 self.set_light_off()
-    #             else: # if holding smaller
-    #                 self.move_left()
-
-    #         else: # right-moving mode
-    #             if self.compare_item() != 1: # if holding smaller
-    #                 self.swap_item()
-    #                 self.move_right()
-    #             else: # turn light on, swap
-    #                 self.swap_item()
-    #                 self.set_light_on()
-
-    #     while self.can_move_left():  # clean up
-    #         self.move_left()
-    #         self.swap_item()
-        
-    #     print(self._list)
-
-
     
 if __name__ == "__main__":
     # Test our your implementation from the command line
