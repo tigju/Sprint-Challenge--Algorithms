@@ -14,7 +14,7 @@ The time complexity of this snippet is linear O(n), because the statement inside
 
 ```python
 b)  sum = 0
-    # O(n) * O(1) * O(n) * O(1) * O(1) = O(n) * O(n) = O(n^2)
+    # O(n)*O(lon(n)) = O(n log(n))
     for i in range(n):  # O(n)
       j = 1             # O(1)
       while j < n:      # O(n)
@@ -57,7 +57,7 @@ return the floor value
 
 Time Complexity:
 
-The time complexity of this algorithm is logarithmic becase at each checking (iteration) we divide array in half, even if there is a loop of O(n), meaning that it depends on what number is n, since we dividing n/2 each iteration, the time complexity is O(n log(n))
+The time complexity of this algorithm is logarithmic becase at each checking (iteration) we divide array in half, even if there is a loop of O(n), meaning that it depends on what number is n, since we dividing n/2 each iteration, the time complexity is O(log(n))
 
 Code Example:
 
